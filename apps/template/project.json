@@ -3,6 +3,51 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/template",
   "projectType": "application",
-  "targets": {},
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/template",
+        "outputPath": "dist/apps/template"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "template:build",
+        "dev": true,
+        "port": 4200,
+        "hostname": "localhost"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "template:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "template:build:production",
+          "dev": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": ["apps/template/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
   "tags": []
 }
