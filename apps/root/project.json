@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "root",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/template",
+  "sourceRoot": "apps/root",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,8 +11,8 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/template",
-        "outputPath": "dist/apps/template"
+        "root": "apps/root",
+        "outputPath": "dist/apps/root"
       },
       "configurations": {
         "development": {},
@@ -23,18 +23,18 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "template:build",
+        "buildTarget": "root:build",
         "dev": true,
         "port": 4200,
         "hostname": "localhost"
       },
       "configurations": {
         "development": {
-          "buildTarget": "template:build:development",
+          "buildTarget": "root:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "template:build:production",
+          "buildTarget": "root:build:production",
           "dev": false
         }
       }
@@ -45,7 +45,7 @@
         "{options.outputFile}"
       ],
       "options": {
-        "lintFilePatterns": ["apps/template/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/root/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

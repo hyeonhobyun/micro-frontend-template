@@ -49,7 +49,17 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@nx/react": {
+      "library": {}
     }
   },
-  "nxCloudAccessToken": "OTQ2ZGQ2YzYtYmU0Mi00ZmJkLWE3YTctOGI0NmU1OTQ2YTkwfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "OTQ2ZGQ2YzYtYmU0Mi00ZmJkLWE3YTctOGI0NmU1OTQ2YTkwfHJlYWQtd3JpdGU=",
+  "targetDefaults": {
+    "@nx/rollup:rollup": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  }
 }
