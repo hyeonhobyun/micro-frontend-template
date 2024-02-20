@@ -2,7 +2,7 @@ import { defineVars } from '@stylexjs/stylex';
 import { margin } from 'polished';
 
 export const modalVars = defineVars({
-  default: {
+  container: {
     position: 'fixed',
     top: '0',
     left: '0',

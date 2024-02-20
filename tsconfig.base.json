@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@micro-frontend-template/hoc/server": ["libs/hoc/src/server.ts"],
       "@micro-frontend-template/styles/server": ["libs/styles/src/server.ts"]
     }
   },

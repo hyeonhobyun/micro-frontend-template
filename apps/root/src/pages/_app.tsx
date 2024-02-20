@@ -20,6 +20,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
       </Head>
       <main className="app">
         <Component {...pageProps} />
+        <div id="LayersContainer" />
       </main>
     </>
   );

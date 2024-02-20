@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "preinstall": "npx typesync",
+    "pnpm:devPreinstall": "npx only-allow pnpm && npx typesync",
+    "preinstall": "npx only-allow pnpm",
     "start:root:dev": "NODE_OPTIONS='--inspect' nx serve root --verbose",
     "start:root:prod": "nx serve root --prod",
     "build:root": "nx build root --prod",
@@ -15,6 +16,7 @@
   "private": true,
   "dependencies": {
     "@stylexjs/stylex": "^0.5.1",
+    "lodash-es": "^4.17.21",
     "next": "14.0.4",
     "polished": "^4.3.1",
     "react": "18.2.0",
@@ -47,6 +49,7 @@
     "@types/eslint": "~8.56.2",
     "@types/eslint-config-prettier": "~6.11.3",
     "@types/jest": "^29.4.0",
+    "@types/lodash-es": "~4.17.12",
     "@types/node": "18.16.9",
     "@types/prettier": "~2.6.4",
     "@types/react": "18.2.33",

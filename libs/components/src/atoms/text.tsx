@@ -23,14 +23,19 @@ const styles2 = stylex.create({
 
 interface TextProps {
   children: ReactNode;
+  onClick?: () => void;
 }
 
 const Text = ({ children }: TextProps) => {
   return <b className={stylex(styles.base, styles.highlighted)}>{children}</b>;
 };
 
-const Text2 = ({ children }: TextProps) => {
-  return <span className={stylex(styles2.asdf)}>{children}</span>;
+const Text2 = ({ children, onClick }: TextProps) => {
+  return (
+    <span className={stylex(styles2.asdf)} onClick={onClick}>
+      {children}
+    </span>
+  );
 };
 
 export { Text, Text2 };
