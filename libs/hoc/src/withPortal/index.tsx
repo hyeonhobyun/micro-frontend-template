@@ -1,3 +1,5 @@
+import stylex from '@stylexjs/stylex';
+import { withPortalStyles } from 'libs/hoc/src/withPortal/style';
 import { isNull } from 'lodash-es';
 import React, {
   Dispatch,
@@ -53,13 +55,17 @@ const WithPortal = ({
     ? createPortal(
         <section
           id="backgroundHolder"
+          className={stylex(
+            withPortalStyles.container,
+            withPortalStyles.background,
+          )}
           onClick={(event) => {
             if (!isDimBlocked && (event.target as HTMLDivElement).id) {
               setIsOpen(false);
             }
           }}
         >
-          {children}
+          <div className={stylex(withPortalStyles.content)}>{children}</div>
         </section>,
         detectedTargetNode,
       )
