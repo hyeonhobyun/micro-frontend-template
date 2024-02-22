@@ -5,11 +5,15 @@
   "scripts": {
     "pnpm:devPreinstall": "npx only-allow pnpm && npx typesync",
     "preinstall": "npx only-allow pnpm",
-    "start:root:dev": "NODE_OPTIONS='--inspect' nx serve root --verbose",
-    "start:root:prod": "nx serve root --prod",
-    "build:root": "nx build root --prod",
+    "start:root:dev": "NODE_OPTIONS='--inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve root --verbose",
+    "start:root:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve root --prod",
+    "start:user:dev": "NODE_OPTIONS='--inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve user --verbose",
+    "start:user:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve user --prod",
+    "build:root": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx build root --prod",
+    "build:user": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx build user --prod",
     "lint": "nx affected:lint",
     "build:all": "nx affected:build --prod",
+    "build:dev": "nx affected:build --dev",
     "e2e:run:dev": "nx e2e root-e2e",
     "e2e:run:prod": "nx e2e root-e2e --prod"
   },
@@ -24,6 +28,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@module-federation/nextjs-mf": "^8.1.10",
     "@nx/devkit": "18.0.2",
     "@nx/eslint": "18.0.2",
     "@nx/eslint-plugin": "18.0.2",
@@ -72,6 +77,7 @@
     "swc-loader": "0.1.15",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
-    "typescript": "~5.3.2"
+    "typescript": "~5.3.2",
+    "webpack": "5.89.0"
   }
 }

@@ -2,7 +2,7 @@ interface ExampleModalContentProps {
   text: string;
 }
 
-const ExampleModalContent = ({ text }: ExampleModalContentProps) => {
+const ExampleModal = ({ text }: ExampleModalContentProps) => {
   return (
     <section>
       <span>예제</span>
@@ -13,5 +13,5 @@ const ExampleModalContent = ({ text }: ExampleModalContentProps) => {
   );
 };
 
-export { ExampleModalContent };
+export { ExampleModal };
 export type { ExampleModalContentProps };

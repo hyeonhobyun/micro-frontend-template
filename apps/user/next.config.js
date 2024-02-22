@@ -2,11 +2,8 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
-const path = require('path');
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-const stylexPlugin = require('@stylexjs/nextjs-plugin');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
+const path = require('path');
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
@@ -20,13 +17,11 @@ const nextConfig = {
   webpack: (config, options) => {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'root',
+        name: 'user',
         filename: `static/chunks/remoteEntry.js`,
-        remotes: {
-          user: `user@http://localhost:4201/_next/static/chunks/remoteEntry.js`,
+        exposes: {
+          './test': path.join(__dirname, 'src/pages/index.tsx'),
         },
-        exposes: {},
-        shared: {},
         extraOptions: {},
       }),
     );
@@ -37,12 +32,6 @@ const nextConfig = {
 const plugins = [
   // Add more Next.js plugins to this list if needed.
   withNx,
-  stylexPlugin({
-    aliases: {
-      '@/*': [path.join(__dirname, '*')],
-    },
-    rootDir: __dirname,
-  }),
 ];
 
 module.exports = composePlugins(...plugins)(nextConfig);
