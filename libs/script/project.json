@@ -1,0 +1,8 @@
+{
+  "name": "script",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/script/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

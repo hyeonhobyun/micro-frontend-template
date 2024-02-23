@@ -1,0 +1,8 @@
+{
+  "name": "socket",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/socket/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

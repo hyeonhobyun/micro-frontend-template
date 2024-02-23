@@ -5,17 +5,28 @@
   "scripts": {
     "pnpm:devPreinstall": "npx only-allow pnpm && npx typesync",
     "preinstall": "npx only-allow pnpm",
+
+    "prestart:dev": "yarn run clean:cache && yarn run generate:typeHelper",
+
+    "start:dev": "nx affected:serve --dev",
+
     "start:root:dev": "NODE_OPTIONS='--inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve root --verbose",
     "start:root:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve root --prod",
     "start:user:dev": "NODE_OPTIONS='--inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve user --verbose",
     "start:user:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve user --prod",
+
     "build:root": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx build root --prod",
     "build:user": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx build user --prod",
-    "lint": "nx affected:lint",
+
     "build:all": "nx affected:build --prod",
     "build:dev": "nx affected:build --dev",
+
     "e2e:run:dev": "nx e2e root-e2e",
-    "e2e:run:prod": "nx e2e root-e2e --prod"
+    "e2e:run:prod": "nx e2e root-e2e --prod",
+
+    "lint": "nx affected:lint",
+    "generate:typeHelper": "ts-node -P libs/script/tsconfig.json -r tsconfig-paths/register libs/script/src/typeHelper.ts",
+    "postgenerate:typeHelper": "prettier --write libs/assets/dist/type/assetTypeHelper.ts"
   },
   "private": true,
   "dependencies": {
@@ -25,7 +36,8 @@
     "polished": "^4.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "webpack-spritesmith": "^1.1.0"
   },
   "devDependencies": {
     "@module-federation/nextjs-mf": "^8.1.10",
