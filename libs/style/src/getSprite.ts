@@ -37,7 +37,7 @@ const getJSONIfItExisting = (
   let selectedJSON: SpriteSmithResultObj[];
 
   try {
-    selectedJSON = require(`../../../dist/sprites/sprite-${JSONName}.generated.json`);
+    selectedJSON = require(`../../../assets/dist/sprites/sprite-${JSONName}.generated.json`);
   } catch {
     console.error(`it hasn't been found any sprite JSON file`);
 

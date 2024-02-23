@@ -2,10 +2,10 @@ const { composePlugins, withNx } = require('@nx/next');
 const path = require('path');
 const stylexPlugin = require('@stylexjs/nextjs-plugin');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
-const { ROOT_DIR } = require('libs/constants/src/directory');
 const SpriteSmithPlugin = require('webpack-spritesmith');
 const fs = require('fs');
 
+const ROOT_DIR = path.join(__dirname, '../../');
 const IS_DEV_MODE = process.env.NODE_ENV === 'development';
 
 const getSpriteSmithPlugin = (dirNames) => {

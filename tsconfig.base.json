@@ -15,8 +15,33 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@micro-frontend-template/hoc/server": ["libs/hoc/src/server.ts"],
-      "@micro-frontend-template/styles/server": ["libs/styles/src/server.ts"]
+      "@assets/*": [
+        "lib/assets/src/*"
+      ],
+      "@components/*": [
+        "lib/components/src/*"
+      ],
+      "@constants/*": [
+        "lib/constants/src/*"
+      ],
+      "@hoc/*": [
+        "lib/hoc/src/*"
+      ],
+      "@scripts/*": [
+        "lib/scripts/src/*"
+      ],
+      "@sockets/*": [
+        "lib/sockets/src/*"
+      ],
+      "@style/*": [
+        "lib/style/src/*"
+      ],
+      "@type/*": [
+        "lib/type/src/*"
+      ],
+      "@utils/*": [
+        "lib/utils/src/*"
+      ]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.d.ts"],
