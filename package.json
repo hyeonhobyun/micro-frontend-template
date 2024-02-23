@@ -9,14 +9,12 @@
     "prestart:dev": "yarn run clean:cache && yarn run generate:typeHelper",
 
     "start:dev": "nx affected:serve --dev",
-
-    "start:root:dev": "NODE_OPTIONS='--inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve root --verbose",
-    "start:root:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve root --prod",
-    "start:user:dev": "NODE_OPTIONS='--inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve user --verbose",
-    "start:user:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx serve user --prod",
-
-    "build:root": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx build root --prod",
-    "build:user": "NEXT_PRIVATE_LOCAL_WEBPACK=true nx build user --prod",
+    "start:root:dev": "NODE_OPTIONS='--inspect' nx serve root --verbose",
+    "start:root:prod": "nx serve root --prod",
+    "start:user:dev": "NODE_OPTIONS='--inspect' nx serve user --verbose",
+    "start:user:prod": "nx serve user --prod",
+    "build:root": "nx build root --prod",
+    "build:user": "nx build user --prod",
 
     "build:all": "nx affected:build --prod",
     "build:dev": "nx affected:build --dev",
