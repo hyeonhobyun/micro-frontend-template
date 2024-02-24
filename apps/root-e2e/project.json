@@ -1,0 +1,26 @@
+{
+  "name": "root-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/root-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "options": {
+
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "root:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/root-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "implicitDependencies": ["root"]
+}

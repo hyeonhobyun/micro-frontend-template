@@ -1,0 +1,1 @@
+export const SPRITE_IMAGE_DEFAULT_RATIO = 0.25;

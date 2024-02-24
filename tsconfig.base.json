@@ -14,7 +14,36 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@assets/*": [
+        "lib/assets/src/*"
+      ],
+      "@components/*": [
+        "lib/components/src/*"
+      ],
+      "@constants/*": [
+        "lib/constants/src/*"
+      ],
+      "@hoc/*": [
+        "lib/hoc/src/*"
+      ],
+      "@scripts/*": [
+        "lib/scripts/src/*"
+      ],
+      "@sockets/*": [
+        "lib/sockets/src/*"
+      ],
+      "@style/*": [
+        "lib/style/src/*"
+      ],
+      "@type/*": [
+        "lib/type/src/*"
+      ],
+      "@utils/*": [
+        "lib/utils/src/*"
+      ]
+    }
   },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.d.ts"],
   "exclude": ["node_modules", "tmp"]
 }
