@@ -127,7 +127,7 @@ const plugins = [
   stylexPlugin({
     aliases: {
       '@/*': [path.join(__dirname, '*')],
-     "@style/*"': [path.join(__dirname,"libs/style/src/*"'),
+      '@style/*': [path.join(__dirname, 'libs/style/src/*')],
     },
     rootDir: __dirname,
   }),
