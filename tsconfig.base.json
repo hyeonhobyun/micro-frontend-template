@@ -16,31 +16,40 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": [
-        "lib/assets/src/*"
+        "libs/assets/src/*"
       ],
       "@components/*": [
-        "lib/components/src/*"
+        "libs/components/src/*"
       ],
       "@constants/*": [
-        "lib/constants/src/*"
+        "libs/constants/src/*"
       ],
       "@hoc/*": [
-        "lib/hoc/src/*"
+        "libs/hoc/src/*"
+      ],
+      "@hooks/*": [
+        "libs/hooks/src/*"
+      ],
+      "@service/*": [
+        "libs/service/src/*"
+      ],
+      "@store/*": [
+        "libs/store/src/*"
       ],
       "@scripts/*": [
-        "lib/scripts/src/*"
+        "libs/scripts/src/*"
       ],
       "@sockets/*": [
-        "lib/sockets/src/*"
+        "libs/sockets/src/*"
       ],
       "@style/*": [
-        "lib/style/src/*"
+        "libs/style/src/*"
       ],
       "@type/*": [
-        "lib/type/src/*"
+        "libs/type/src/*"
       ],
       "@utils/*": [
-        "lib/utils/src/*"
+        "libs/utils/src/*"
       ]
     }
   },

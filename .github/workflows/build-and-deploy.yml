@@ -1,0 +1,100 @@
+name: Build and Deploy Multiple Apps
+
+on: push
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy_project_order: ${{ steps.check_flags.outputs.deploy_project_order }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set Deployment Flags and Create env file
+        run: |
+          chmod +x ./set-deploy-flags.sh
+          . ./set-deploy-flags.sh
+      - name: Upload deployment environment file
+        uses: actions/upload-artifact@v2
+        with:
+          name: deployment-environments
+          path: deploy-envs.txt
+
+  deploy_order:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set environment variables
+        uses: ./.github/actions/set-environment
+      - name: Deploy Project Order
+        if: ${{ env.DEPLOY_PROJECT_ORDER == 'true' }}
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: wCZuIfS12AVVhHCOWVo5vWSs
+          vercel-args: '${{ env.DEPLOY_ENV }}'
+          vercel-project-id: ${{ env.ORDER_VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ env.ORDER_VERCEL_ORG_ID }}
+
+  deploy_payment:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set environment variables
+        uses: ./.github/actions/set-environment
+      - name: Deploy Project Payment
+        if: ${{ env.DEPLOY_PROJECT_PAYMENT == 'true' }}
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: wCZuIfS12AVVhHCOWVo5vWSs
+          vercel-args: '${{ env.DEPLOY_ENV }}'
+          vercel-project-id: ${{ env.PAYMENT_VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ env.PAYMENT_VERCEL_ORG_ID }}
+
+  deploy_root:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set environment variables
+        uses: ./.github/actions/set-environment
+      - name: Deploy Project Root
+        if: ${{ env.DEPLOY_PROJECT_ROOT == 'true' }}
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: wCZuIfS12AVVhHCOWVo5vWSs
+          vercel-args: '${{ env.DEPLOY_ENV }}'
+          vercel-project-id: ${{ env.ROOT_VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ env.ROOT_VERCEL_ORG_ID }}
+
+  deploy_routing:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set environment variables
+        uses: ./.github/actions/set-environment
+      - name: Deploy Project Routing
+        if: ${{ env.DEPLOY_PROJECT_ROUTING == 'true' }}
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: wCZuIfS12AVVhHCOWVo5vWSs
+          vercel-args: '${{ env.DEPLOY_ENV }}'
+          vercel-project-id: ${{ env.ROUTING_VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ env.ROUTING_VERCEL_ORG_ID }}
+
+  deploy_user:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set environment variables
+        uses: ./.github/actions/set-environment
+      - name: Deploy Project User
+        if: ${{ env.DEPLOY_PROJECT_USER == 'true' }}
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: wCZuIfS12AVVhHCOWVo5vWSs
+          vercel-args: '${{ env.DEPLOY_ENV }}'
+          vercel-project-id: ${{ env.USER_VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ env.USER_VERCEL_ORG_ID }}

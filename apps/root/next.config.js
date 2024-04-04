@@ -4,6 +4,7 @@ const stylexPlugin = require('@stylexjs/nextjs-plugin');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 const SpriteSmithPlugin = require('webpack-spritesmith');
 const fs = require('fs');
+const withBundleAnalyzer = require('@next/bundle-analyzer');
 
 const ROOT_DIR = path.join(__dirname, '../../');
 const IS_DEV_MODE = process.env.NODE_ENV === 'development';
@@ -120,9 +121,13 @@ const nextConfig = {
 const plugins = [
   // Add more Next.js plugins to this list if needed.
   withNx,
+  withBundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true',
+  }),
   stylexPlugin({
     aliases: {
       '@/*': [path.join(__dirname, '*')],
+     "@style/*"': [path.join(__dirname,"libs/style/src/*"'),
     },
     rootDir: __dirname,
   }),

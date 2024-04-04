@@ -1,0 +1,16 @@
+name: 'Set Environment Variables from File'
+description: 'Loads environment variables from a file'
+runs:
+  using: 'composite'
+  steps:
+    - name: Download deployment environment file
+      uses: actions/download-artifact@v2
+      with:
+        name: deployment-environments
+        path: .
+    - name: Set Environment Variables
+      run: |
+        while IFS="=" read -r key value; do
+          echo "$key=$value" >> $GITHUB_ENV;
+        done < deploy-envs.txt
+      shell: bash
